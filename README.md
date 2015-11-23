@@ -22,7 +22,7 @@ From lighting up a LED to getting measurements from a sensor.
 
 Arduino is an open-source prototyping platform firstly aimed at the general public. [[Read more]](https://www.arduino.cc/en/Guide/Introduction)
 
-![image arduino](https://raw.github.com/Eleonore9/hardware_workshop/master/img/arduinouno.png)
+![image arduino](https://raw.github.com/Eleonore9/hardware_workshop/master/img/Arduino.jpg)
 
 It is usually programmed using the Arduino programming language on the Arduino IDE. But it can also be programmed using C++ or C.[[Read more]](https://gist.github.com/baalexander/8530398)
 
@@ -118,4 +118,4 @@ void loop() // run over and over again
 ### Light intensity sensor
 [On codebender](https://codebender.cc/sketch:189156)
 
-[[embed url=https://codebender.cc/embed/sketch:189156]]
+[[img src=https://codebender.cc/embed/sketch:189156]]
