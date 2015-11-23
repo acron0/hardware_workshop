@@ -36,6 +36,76 @@ CodeBender is a cross-platform web based editor for microcontroller boards. It h
 
 ### Light two LEDs
 
-[Source code](https://codebender.cc/sketch:189141)
+[Code on cc](https://codebender.cc/sketch:189141)
 
-<iframe style="height: 510px; width: 100%; margin: 10px 0 10px;" allowTransparency="true" src="https://codebender.cc/embed/sketch:189141" frameborder="0"></iframe>
+```
+#define LED_PIN12 12
+#define LED_PIN13 13
+
+// I just alternate lighting two LEDs!
+void setup()
+{
+    pinMode(LED_PIN12, OUTPUT);
+    pinMode(LED_PIN13, OUTPUT);
+}
+
+void loop()
+{
+    digitalWrite(LED_PIN12, HIGH);
+    delay(100);
+    digitalWrite(LED_PIN12, LOW);
+    delay(900);
+    digitalWrite(LED_PIN13, HIGH);
+    delay(100);
+    digitalWrite(LED_PIN13, LOW);
+    delay(900);	
+}
+```
+	
+### Temperature sensor
+
+[Code on cc](https://codebender.cc/sketch:189145)
+
+```
+#include <Time.h> 
+
+int sensorpin = 0; //Pin for the temperature sensor
+ 
+void setup()
+{
+  Serial.begin(9600);  //Start the serial connection with the computer
+                       //to view the result open the serial monitor 
+}
+ 
+void loop() // run over and over again
+{
+    //getting the voltage reading from the temperature sensor
+
+    int reading = analogRead(sensorpin); 
+     
+    // converting that reading to voltage, for 3.3v arduino use 3.3
+    float voltage = reading * 5.0;
+    voltage /= 1024.0; 
+     
+    //print out the voltage
+    //Serial.print(voltage); 
+    //Serial.println(" volts");
+     
+    // now print out the temperature
+    float temperatureC = (voltage - 0.5) * 100 ; //converting from 10 mv per degree wit 500 mV offset
+                                                 //to degrees ((voltage - 500mV) times 100)
+    //Serial.print(hour());
+    //printDigits(minute());
+    //printDigits(second());
+    //Serial.print(",");
+    Serial.print(temperatureC); 
+    Serial.println(" degrees C");
+     
+    // now convert to Fahrenheight
+    //float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
+    //Serial.print(temperatureF); 
+    //Serial.println(" degrees F");
+     
+    delay(10000); //waiting a second
+}
+```
