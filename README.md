@@ -22,6 +22,8 @@ From lighting up a LED to getting measurements from a sensor.
 
 Arduino is an open-source prototyping platform firstly aimed at the general public. [[Read more]](https://www.arduino.cc/en/Guide/Introduction)
 
+![image arduino](https://raw.github.com/Eleonore9/hardware_workshop/master/img/arduino.png)
+
 It is usually programmed using the Arduino programming language on the Arduino IDE. But it can also be programmed using C++ or C.[[Read more]](https://gist.github.com/baalexander/8530398)
 
 Arduino makes it accessible to programme microcontrollers. It is a good way to get started with robotics, experiment, or build prototypes.
@@ -30,8 +32,9 @@ Arduino makes it accessible to programme microcontrollers. It is a good way to g
 ## Install
 
 To avoid installation issue (aaah, software!) we'll use the CodeBender platform.
-You can create an account [here](https://codebender.cc/)!
+You can create an account [here](https://codebender.cc/register/)!
 CodeBender is a cross-platform web based editor for microcontroller boards. It helps you write, compile and upload code to your board.
+![image codebender](https://raw.github.com/Eleonore9/hardware_workshop/master/img/codebender.png)
 
 
 ### Light two LEDs
