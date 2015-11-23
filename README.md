@@ -37,6 +37,9 @@ CodeBender is a cross-platform web based editor for microcontroller boards. It h
 ![image codebender](https://raw.github.com/Eleonore9/hardware_workshop/master/img/codebender.png)
 
 
+## Code examples
+Note: for more examples see [github.com/Eleonore9/Arduino_hacks](https://github.com/Eleonore9/Arduino_hacks)
+
 ### Light two LEDs
 
 [On codebender](https://codebender.cc/sketch:189141)
@@ -118,4 +121,92 @@ void loop() // run over and over again
 ### Light intensity sensor
 [On codebender](https://codebender.cc/sketch:189156)
 
-[[img src=https://codebender.cc/embed/sketch:189156]]
+```
+//Sketch for a light dependent resistor (LDR) module
+
+//Global variables
+int LDRValue; //LDR value
+int light_sensitivity = 40; //Thresold value
+int light_sensitivity2 = 10; //Thresold value
+float Rsensor; //Resistance of sensor
+
+void setup()
+{
+    Serial.begin(9600); //Starts the Serial connection
+    pinMode(13, OUTPUT); //Using the LED at the pin 13
+}
+
+void loop()
+{
+    LDRValue = analogRead(0);//Reads LDR values at A0
+    //Serial.println(LDRValue);
+    Rsensor = (float) (1023 - LDRValue) * 10 / LDRValue;
+    //Serial.println(Rsensor, DEC); 
+    delay(4000); //Sets the speed by which LDR send a value to Arduino
+    if (Rsensor < light_sensitivity)
+    {
+        if (Rsensor < light_sensitivity2)
+        {
+            Serial.print(Rsensor);
+            Serial.println(" - The light is super bright!");
+        }
+        else
+        {
+        digitalWrite(13, HIGH);
+        Serial.print(Rsensor);
+        Serial.println(" - The light is on");
+        }
+    }
+    else
+    {
+        digitalWrite(13, LOW);
+        Serial.print(Rsensor);
+        Serial.println(" - The light is off");
+    }
+}
+```
+
+
+### Light a LED strip
+[On codebender](https://codebender.cc/sketch:189164)
+
+```
+    // From https://learn.adafruit.com/neopixel-painter/test-neopixel-strip
+    
+    // Simple NeoPixel test.  Lights just a few pixels at a time so a
+    // 1m strip can safely be powered from Arduino 5V pin.  Arduino
+    // may nonetheless hiccup when LEDs are first connected and not
+    // accept code.  So upload code first, unplug USB, connect pixels
+    // to GND FIRST, then +5V and digital pin 6, then re-plug USB.
+    // A working strip will show a few pixels moving down the line,
+    // cycling between red, green and blue.  If you get no response,
+    // might be connected to wrong end of strip (the end wires, if
+    // any, are no indication -- look instead for the data direction
+    // arrows printed on the strip).
+     
+    #include <Adafruit_NeoPixel.h>
+     
+    #define PIN      6
+    #define N_LEDS 144
+     
+    Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
+     
+    void setup() {
+      strip.begin();
+    }
+     
+    void loop() {
+      chase(strip.Color(255, 0, 0)); // Red
+      chase(strip.Color(0, 255, 0)); // Green
+      chase(strip.Color(0, 0, 255)); // Blue
+    }
+     
+    static void chase(uint32_t c) {
+      for(uint16_t i=0; i<strip.numPixels()+4; i++) {
+          strip.setPixelColor(i  , c); // Draw new pixel
+          strip.setPixelColor(i-4, 0); // Erase pixel a few steps back
+          strip.show();
+          delay(25);
+      }
+    }
+```
