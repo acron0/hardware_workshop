@@ -22,7 +22,7 @@ From lighting up a LED to getting measurements from a sensor.
 
 Arduino is an open-source prototyping platform firstly aimed at the general public. [[Read more]](https://www.arduino.cc/en/Guide/Introduction)
 
-![image arduino](https://raw.github.com/Eleonore9/hardware_workshop/master/img/arduino.png)
+![image arduino](https://raw.github.com/Eleonore9/hardware_workshop/master/img/arduinouno.png)
 
 It is usually programmed using the Arduino programming language on the Arduino IDE. But it can also be programmed using C++ or C.[[Read more]](https://gist.github.com/baalexander/8530398)
 
@@ -39,7 +39,7 @@ CodeBender is a cross-platform web based editor for microcontroller boards. It h
 
 ### Light two LEDs
 
-[Code on cc](https://codebender.cc/sketch:189141)
+[On codebender](https://codebender.cc/sketch:189141)
 
 ```
 #define LED_PIN12 12
@@ -64,10 +64,11 @@ void loop()
     delay(900);	
 }
 ```
-	
+
+
 ### Temperature sensor
 
-[Code on cc](https://codebender.cc/sketch:189145)
+[On codebender](https://codebender.cc/sketch:189145)
 
 ```
 #include <Time.h> 
@@ -112,3 +113,9 @@ void loop() // run over and over again
     delay(10000); //waiting a second
 }
 ```
+
+
+### Light intensity sensor
+[On codebender](https://codebender.cc/sketch:189156)
+
+[[embed url=https://codebender.cc/embed/sketch:189156]]
